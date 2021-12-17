@@ -3,13 +3,14 @@ def checkArithmeticSubarrays(nums,l,r):
     for i in range(len(l)):
         new = nums[l[i]:r[i]+1]
         new.sort()
-        dif = new[0]-new[1]
+        dif = new[1]-new[0]
         print(new)
         
         for j in range(len(new)-1):
-            flag = False
-            if new[j] - new[j+1] == dif:
-                 flag = True
+            flag = True
+            if new[j+1] - new[j] != dif:
+                 flag = False
+                 break
         if flag == True:
             output.append(True)
         else:
