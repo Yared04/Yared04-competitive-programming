@@ -3,18 +3,9 @@ def  findOriginalArray(changed):
     if len(changed)%2 != 0:
         return output
     else:
-        # changed.sort()
-        for i in range(len(changed)):
-            for j in range(len(changed)):
-                if len(output) == len(changed)//2:
-                        break 
-                if changed[i]*2 == changed[j]:
-                    output.append(changed[i])
-                    changed.pop(i)
-                    changed.pop(j)
-                # elif changed[i]/2 == changed[j]:
-                #     output=[]
-                #     output.append(changed[j])
+        while len(output) < len(changed)//2:
+            for i in range(len(changed)):
+                if changed[i] = changed
                                
     return output
 
