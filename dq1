@@ -1,0 +1,21 @@
+class Solution:
+    def partitionLabels(self, s: str) -> List[int]:
+        count_of_letters = Counter(s)
+        re = []
+        start = 0
+        ptr = 0
+        j = 0
+        while ptr <= len(s):
+            if ptr == j or j == len(s):
+                re.append(j-start)
+                start = ptr
+            if j == len(s):
+                break
+            while count_of_letters[s[ptr]] > 0 and j < len(s):
+                count_of_letters[s[j]] -= 1
+                j += 1 
+          
+            ptr += 1
+        return re[1:]
+
+        
