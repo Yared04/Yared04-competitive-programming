@@ -1,0 +1,10 @@
+class Solution:
+    def strStr(self, haystack: str, needle: str) -> int:
+        pt1 = 0
+        pt2 = len(needle)
+        while pt2 <= len(haystack):
+            if haystack[pt1:pt2] == needle:
+                return pt1
+            pt1 += 1
+            pt2 += 1
+        return -1
