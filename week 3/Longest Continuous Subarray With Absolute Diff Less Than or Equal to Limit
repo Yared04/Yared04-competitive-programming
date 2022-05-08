@@ -1,0 +1,28 @@
+class Solution:
+    def longestSubarray(self, nums: List[int], limit: int) -> int:
+        pt1 , pt2 = 0,0
+        min_heap = []
+        max_heap = []
+        res = 1
+        heappush(min_heap, (nums[0],0))
+        heappush(max_heap, (-nums[0],0))
+        while pt2 < len(nums):
+            maxx = -max_heap[0][0]
+            minn = min_heap[0][0]
+            if maxx - minn <= limit:
+                temp = (pt2-pt1) + 1
+                res = max(res, temp)
+            else:
+                pt1 += 1
+                while min_heap and min_heap[0][1] < pt1:
+                    heappop(min_heap)
+                while max_heap and max_heap[0][1] < pt1:
+                    heappop(max_heap)
+               
+            pt2+=1 
+            if len(nums) > pt2:
+                heappush(min_heap,(nums[pt2], pt2))
+                heappush(max_heap, (-nums[pt2],pt2))
+          
+            # print(res,max_heap, min_heap, maxx, minn)
+        return res
