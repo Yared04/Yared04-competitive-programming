@@ -5,10 +5,10 @@ class Solution:
         res = 0
         while left <= right:
             mid = (left + right) // 2
-            days = 0
+            hours = 0
             for banana in piles:
-                days += ceil(banana/mid)
-            if days <= h:
+                hours += ceil(banana/mid)
+            if hours <= h:
                 right = mid-1
                 res = mid
             else:
