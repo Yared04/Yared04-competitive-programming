@@ -12,15 +12,11 @@ class Solution:
             if not root:
                 return 0,0
             
-            ## left
             left = recur(root.left)
-            ## right
             right = recur(root.right)
-            ## with
             with_ = root.val + left[1] + right[1]
             
             ## with_out
-            without = 0
             inc_left = left[0] + max(right[0], right[1])
             inc_right = right[0] + max(left[0], left[1])
             both = left[1] + right[1]
