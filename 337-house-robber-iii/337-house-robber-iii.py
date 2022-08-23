@@ -12,14 +12,8 @@ class Solution:
             if not root:
                 return 0,0
             
-            left = recur(root.left)
-            right = recur(root.right)
-            with_ = root.val + left[1] + right[1]
-            
-            ## with_out
-            inc_left = left[0] + max(right[0], right[1])
-            inc_right = right[0] + max(left[0], left[1])
-            both = left[1] + right[1]
-            return with_, max(inc_left, inc_right, both)
+            with_l, without_l = recur(root.left)
+            with_r, without_r = recur(root.right)
+            return (root.val + without_l + without_r, max(with_l, without_l) + max(with_r, without_r))
         
         return max(recur(root))
