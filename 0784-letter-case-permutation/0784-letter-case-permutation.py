@@ -1,19 +1,14 @@
 class Solution:
     def letterCasePermutation(self, s: str) -> List[str]:
-        answer = set()
+        answer = []
         def helper(idx, new_string):
             if idx == len(s):
-                answer.add(new_string)
+                answer.append(new_string)
                 return
-            ns = None
-            if 64 < ord(s[idx]) < 97:
-                ns = new_string[:idx] + chr(ord(new_string[idx]) + 32) + new_string[idx+1:]
-            elif ord(new_string[idx]) > 96:
-                ns = new_string[:idx] + chr(ord(s[idx]) - 32) + new_string[idx+1:]
-            if ns:
-                helper(idx + 1, ns)
-            helper(idx + 1, new_string)
+            if s[idx].isalpha():
+                helper(idx + 1, new_string + s[idx].lower())
+            helper(idx + 1, new_string + s[idx].upper())
         
-        helper(0, s)
-        return list(answer)
+        helper(0, '')
+        return answer
             
