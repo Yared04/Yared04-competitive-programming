@@ -11,12 +11,11 @@ class Solution:
         while k > 0:
             if bucket[n]:
                 for num in bucket[n]:
-                    if k == 0:
-                        break
                     answer.append(num)
                     k -= 1
+                    if k == 0:
+                        return answer
             n -= 1
-        return answer
             
             
             
