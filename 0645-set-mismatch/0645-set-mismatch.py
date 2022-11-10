@@ -1,10 +1,13 @@
 class Solution:
     def findErrorNums(self, nums: List[int]) -> List[int]:
-        nums_set = set(i for i in range(1, len(nums)+1))
-        answer = []
-        for idx, num in enumerate(nums):
-            if num in nums_set:
-                nums_set.remove(num)
+        duplicate = 0
+        for i, num in enumerate(nums):
+            if nums[abs(num) - 1] < 0:
+                duplicate = abs(num)
             else:
-                answer.append(num)
-        return answer + list(nums_set)
+                nums[abs(num) - 1] *= -1
+        print(nums)
+        for i in range(len(nums)):
+            if nums[i] > 0:
+                return duplicate, i + 1
+  
