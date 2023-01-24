@@ -1,19 +1,22 @@
 class Solution:
     def countSubstrings(self, s: str) -> int:
-        self.count = 0
-        #taking each letter of s as a center and expanding left and right to check if the resulting substring
-        #is a palindrome as well
-        def countPalindrome(left, right):
-            while left >= 0 and right < len(s) and s[left] == s[right]:
-                self.count += 1
-                left -= 1
-                right += 1
-
-        for i in range(len(s)):
-            #We should consider even and odd length substrings, meaning I should start from a single letter
-            #and from two consecutive letters as the center of a substring
-            countPalindrome(i, i)
-            countPalindrome(i, i+1)
         
-        return self.count
+        #checking if the given substring is a palindrome or no by checking the inside of the substring
+        @lru_cache(None)
+        def isPalindrome(left, right):
+            if left > right:
+                return True
+            if s[left] != s[right]:
+                return False
+            return isPalindrome(left + 1, right - 1)
+        
+        #checking every possible substring
+        count = 0
+        for i in range(len(s)):
+            for j in range(i, len(s)):
+                if isPalindrome(i, j):
+                    count += 1
+                    
+        return count        
+           
                 
