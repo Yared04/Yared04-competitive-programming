@@ -1,9 +1,11 @@
 class Solution:
     def earliestFullBloom(self, plantTime: List[int], growTime: List[int]) -> int:
-        cur_plant_time = 0
-        result = 0
-        indices = sorted(range(len(plantTime)), key=lambda x: -growTime[x]) 
-        for i in indices:
-            cur_plant_time += plantTime[i]
-            result = max(result, cur_plant_time + growTime[i])
-        return result
+        heap = []
+        for idx, growth in enumerate(growTime):
+            heappush(heap, (-growth, idx))
+        end, start = 0, -1
+        while heap:
+            growth, index = heappop(heap)
+            start += plantTime[index]
+            end = max(end, start + (-growth))
+        return end + 1
