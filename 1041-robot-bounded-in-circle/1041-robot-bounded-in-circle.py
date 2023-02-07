@@ -7,10 +7,14 @@ class Solution:
         
         for ins in instructions:
             if ins == 'G':
-                if cur_dir == 0: cur[0]+=1
-                if cur_dir == 1: cur[1]+=1
-                if cur_dir == 2: cur[0]-=1
-                if cur_dir == 3: cur[1]-=1
+                if cur_dir == 0: 
+                    cur[0]+=1
+                elif cur_dir == 1: 
+                    cur[1]+=1
+                elif cur_dir == 2: 
+                    cur[0]-=1
+                elif cur_dir == 3:
+                    cur[1]-=1
             elif ins == 'L':
                 if cur_dir == 0: cur_dir = 3
                 else: cur_dir -= 1
