@@ -16,10 +16,14 @@ class Solution:
                 elif cur_dir == 3:
                     cur[1]-=1
             elif ins == 'L':
-                if cur_dir == 0: cur_dir = 3
-                else: cur_dir -= 1
+                if cur_dir == 0: 
+                    cur_dir = 3
+                else: 
+                    cur_dir -= 1
             elif ins == 'R':
-                if cur_dir == 3: cur_dir = 0
-                else: cur_dir +=1 
+                if cur_dir == 3: 
+                    cur_dir = 0
+                else: 
+                    cur_dir +=1 
                     
         return cur == [0,0] and cur_dir == 0
