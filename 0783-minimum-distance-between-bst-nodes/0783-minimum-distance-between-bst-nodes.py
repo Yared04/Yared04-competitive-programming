@@ -10,14 +10,13 @@ class Solution:
         def dfs(node):
             if not node:
                 return
-            self.vals.append(node.val)
             dfs(node.left)
+            self.vals.append(node.val)
             dfs(node.right)
         dfs(root)
         min_val = 10**5 + 1
-        for i in range(len(self.vals)):
-            for j in range(i+1, len(self.vals)):
-                min_val = min(min_val, abs(self.vals[i] - self.vals[j]))
+        for i in range(len(self.vals)-1):
+            min_val = min(min_val, self.vals[i+1] - self.vals[i])
         return min_val
-            
+
             
