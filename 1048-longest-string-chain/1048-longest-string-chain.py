@@ -11,9 +11,7 @@ class Solution:
             return 1 + count
 
         ans = 0
-        seen = set()
-        for word in words: 
-            seen.add(word)
+        seen = set(words)
         for word in words:
             ans = max(ans, checkValidity(word))
         return ans
