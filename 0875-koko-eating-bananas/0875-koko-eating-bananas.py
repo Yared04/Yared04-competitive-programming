@@ -9,7 +9,7 @@ class Solution:
             
         
         low = 1
-        high = max(piles)
+        high = max(piles) 
         
         while low <= high:
             mid = low + (high - low) // 2
@@ -17,5 +17,6 @@ class Solution:
                 low = mid + 1
             else:
                 high = mid - 1
+                
         return low
                 
