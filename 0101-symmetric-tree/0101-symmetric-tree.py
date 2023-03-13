@@ -29,7 +29,7 @@ class Solution:
                     temp.append(queue[i].right)
             if not mirror(temp):
                 return False
-            queue = temp[:]
+            queue = temp
         return True
             
             
